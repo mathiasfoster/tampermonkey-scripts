@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         View past Unleashed customer orders
 // @namespace    https://au.unleashedsoftware.com
-// @version      0.1
+// @version      0.1.1
 // @description  Provide a quick way to see a customer's past orders, sorted by product.
 // @author       Mathias Foster
 // @match        https://au.unleashedsoftware.com/v2/Customer/Update/*
