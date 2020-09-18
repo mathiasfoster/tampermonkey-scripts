@@ -1,0 +1,33 @@
+// ==UserScript==
+// @name         Edit margin enquiry screen
+// @namespace    https://au.unleashedsoftware.com
+// @version      0.0.1
+// @description  Make it obvious when a customer has stopped ordering products
+// @author       Mathias Foster
+// @match        https://au.unleashedsoftware.com/v2/Enquiry/UnitSalesEnquiry
+// @grant        none
+// @run-at       document-idle
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    let runReport = document.querySelector("#btnRun");
+    let otherRunReport = document.querySelector("#LayoutBox > div:nth-child(10) > div.grid-report.main-grid.grid-with-overlay > div > a");
+
+    runReport.addEventListener("click", () => setTimeout(changeColour, 1000));
+    otherRunReport.addEventListener("click", () => setTimeout(changeColour, 1000));
+
+    function changeColour() {
+        let elements = document.querySelectorAll('.dx-ar');
+        for(var i = 0; i < elements.length; i++) {
+            if(elements[i].innerText === "" || elements[i].innerText === "0.00" || elements[i].innerText === " ") {
+                elements[i].style.backgroundColor = "#e8bcc0";
+
+            } else {
+                elements[i].style.backgroundColor = "#bce8c3";
+            }
+        }
+    }
+
+})();
