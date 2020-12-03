@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         View past Unleashed customer orders
 // @namespace    https://au.unleashedsoftware.com
-// @version      0.3
+// @version      0.3.1
 // @description  Provide a quick way to see a customer's past orders, sorted by product.
 // @author       Mathias Foster
 // @match        https://au.unleashedsoftware.com/v2/Customer/Update/*
 // @grant        none
+// @updateURL    https://github.com/mathiasfoster/tampermonkey-scripts/raw/master/View%20past%20Unleashed%20customer%20orders.user.js
 // ==/UserScript==
 
 (function() {
