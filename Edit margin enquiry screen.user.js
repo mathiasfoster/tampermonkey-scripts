@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Edit margin enquiry screen
 // @namespace    https://au.unleashedsoftware.com
-// @version      0.0.1
+// @version      0.0.2
 // @description  Make it obvious when a customer has stopped ordering products
 // @author       Mathias Foster
 // @match        https://au.unleashedsoftware.com/v2/Enquiry/UnitSalesEnquiry
@@ -15,8 +15,8 @@
     let runReport = document.querySelector("#btnRun");
     let otherRunReport = document.querySelector("#LayoutBox > div:nth-child(10) > div.grid-report.main-grid.grid-with-overlay > div > a");
 
-    runReport.addEventListener("click", () => setTimeout(changeColour, 1000));
-    otherRunReport.addEventListener("click", () => setTimeout(changeColour, 1000));
+    runReport.addEventListener("click", () => setTimeout(changeColour, 2000));
+    otherRunReport.addEventListener("click", () => setTimeout(changeColour, 2000));
 
     function changeColour() {
         let elements = document.querySelectorAll('.dx-ar');
