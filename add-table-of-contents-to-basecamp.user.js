@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Add Table of Contents to Basecamp documents
 // @namespace    http://basecamp.com
-// @version      0.1
-// @description  What the name sez!
+// @version      0.2
+// @description  Add a table of contents at the top of Basecamp documents in a specific team
 // @author       Mathias Foster
 // @match        https://3.basecamp.com/3781719/buckets/5302003/documents/*
 // @icon         https://www.google.com/s2/favicons?domain=basecamp.com
@@ -23,6 +23,18 @@
 
     let tableOfContentsUl = document.createElement('ul');
 
+    var css = '.menu-item:hover { text-decoration: underline; }',
+        head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style');
+    style.type = 'text/css';
+    head.appendChild(style);
+    if (style.styleSheet){
+        // This is required for IE8 and below.
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+
     for(var i in scrape) {
         if(scrape[i].innerText && i > 0) {
             // add id to heading
@@ -31,6 +43,9 @@
             // create new link
             let newA = document.createElement('a');
             newA.setAttribute("onclick", "if(window.location.href.indexOf('#') !== -1) { var url = window.location.href; var hash = window.location.hash; var index_of_hash = url.indexOf(hash) || url.length; var hashless_url = url.substr(0, index_of_hash); window.location.href = hashless_url + '#heading" + i.toString() + "'; } else { window.location.href += '#heading" + i.toString() + "'; }");
+            newA.setAttribute("onmouseover", "");
+            newA.setAttribute("style", "cursor: pointer;");
+            newA.classList.add("menu-item");
 
             // create new list item
             let newLi = document.createElement('li');
