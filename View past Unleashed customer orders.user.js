@@ -5,6 +5,7 @@
 // @description  Provide a quick way to see a customer's past orders, sorted by product.
 // @author       Mathias Foster
 // @match        https://au.unleashedsoftware.com/v2/Customer/Update/*
+// @icon         https://www.google.com/s2/favicons?domain=unleashedsoftware.com
 // @grant        none
 // @updateURL    https://github.com/mathiasfoster/tampermonkey-scripts/raw/master/View%20past%20Unleashed%20customer%20orders.user.js
 // ==/UserScript==
