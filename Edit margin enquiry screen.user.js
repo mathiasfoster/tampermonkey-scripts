@@ -4,6 +4,7 @@
 // @version      0.0.2
 // @description  Make it obvious when a customer has stopped ordering products
 // @author       Mathias Foster
+// @icon         https://www.google.com/s2/favicons?domain=unleashedsoftware.com
 // @match        https://au.unleashedsoftware.com/v2/Enquiry/UnitSalesEnquiry
 // @grant        none
 // @run-at       document-idle
