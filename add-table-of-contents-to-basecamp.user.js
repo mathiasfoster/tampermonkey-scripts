@@ -4,7 +4,7 @@
 // @version      0.2
 // @description  Add a table of contents at the top of Basecamp documents in a specific team
 // @author       Mathias Foster
-// @match        https://3.basecamp.com/3781719/buckets/5302003/documents/*
+// @match        https://3.basecamp.com/*/buckets/*/documents/*
 // @icon         https://www.google.com/s2/favicons?domain=basecamp.com
 // @grant        none
 // @run-at       document-idle
