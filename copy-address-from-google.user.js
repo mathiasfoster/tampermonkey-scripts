@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Copy address from Google
 // @namespace    http://gwg.nz/
-// @version      0.1
+// @version      0.2
 // @description  Copy an address from Google with one click, in the right formatting
 // @author       Mathias Foster
 // @match        https://www.google.com/search?q=*
-// @icon         https://www.google.com/s2/favicons?domain=google.com
+// @icon         https://www.google.com/favicon.ico
 // @grant        none
 // ==/UserScript==
 
