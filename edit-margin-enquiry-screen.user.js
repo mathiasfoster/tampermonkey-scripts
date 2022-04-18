@@ -22,7 +22,7 @@
     function changeColour() {
         let elements = document.querySelectorAll('.dx-ar');
         for(var i = 0; i < elements.length; i++) {
-            if(elements[i].innerText === "" || elements[i].innerText === "0.00" || elements[i].innerText === " ") {
+            if(elements[i].innerText === "" || elements[i].innerText === "0.00" || elements[i].innerText === "0" || elements[i].innerText === " ") {
                 elements[i].style.backgroundColor = "#e8bcc0";
 
             } else {
