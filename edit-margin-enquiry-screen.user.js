@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Edit margin enquiry screen
 // @namespace    https://au.unleashedsoftware.com
-// @version      0.0.3
+// @version      0.0.4
 // @description  Make it obvious when a customer has stopped ordering products
 // @author       Mathias Foster
 // @icon         https://www.google.com/s2/favicons?domain=unleashedsoftware.com
