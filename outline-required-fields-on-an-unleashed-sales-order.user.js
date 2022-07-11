@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outline required fields on an Unleashed sales order
 // @namespace    https://gwg.nz
-// @version      0.3
+// @version      0.4
 // @description  Outline required fields on an Unleashed sales order
 // @author       You
 // @match        https://au.unleashedsoftware.com/v2/SalesOrder/Update/*
@@ -20,6 +20,17 @@
             element.style.border = "";
         }
     }
+    
+    // https://stackoverflow.com/questions/58450386/solution-for-on-change-doesnt-work-when-input-is-changed-programmatically
+    Object.defineProperty(input, 'value', {
+        set: function(t) {
+            console.log('Input value was changed programmatically');
+            return descriptor.set.apply(this, arguments);
+        },
+        get: function() {
+          return descriptor.get.apply(this);
+        }
+    });
     
     let referenceFieldValue = document.querySelector("#CustomerRef");
     let referenceField = document.querySelector("#InvoiceHeaderTable > tbody > tr:nth-child(3)");
