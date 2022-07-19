@@ -31,7 +31,7 @@
     }
     
     let deliveryMethodValue = document.querySelector("#DeliveryMethodList");
-    let deliveryMethod = document.querySelector("#InvoiceHeaderTable > tbody > tr:nth-child(11)");
+    let deliveryMethod = document.querySelector("#InvoiceHeaderTable > tbody > tr:nth-child(13)");
     if(deliveryMethodValue.value === "") {
         deliveryMethod.style.border = redBorder;
         deliveryMethodValue.addEventListener("change", (event) => {
