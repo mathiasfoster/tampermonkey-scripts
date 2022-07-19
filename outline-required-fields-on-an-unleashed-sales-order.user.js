@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outline required fields on an Unleashed sales order
 // @namespace    https://gwg.nz
-// @version      0.6
+// @version      0.7
 // @description  Outline required fields on an Unleashed sales order
 // @author       You
 // @match        https://au.unleashedsoftware.com/v2/SalesOrder/Update/*
