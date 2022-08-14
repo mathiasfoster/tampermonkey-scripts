@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outline required fields on an Unleashed sales order
 // @namespace    https://gwg.nz
-// @version      0.7
+// @version      0.8
 // @description  Outline required fields on an Unleashed sales order
 // @author       You
 // @match        https://au.unleashedsoftware.com/v2/SalesOrder/Update/*
@@ -46,5 +46,9 @@
         addressFieldsValue.addEventListener("change", (event) => {
             changeBorder(addressFields, addressFieldsValue.value);
         });
+    }
+    
+    if(document.querySelector("#DeliveryPostCode").value >= 7000) {
+        alert("Ask about two-day shipping to the South Island!");
     }
 })();
