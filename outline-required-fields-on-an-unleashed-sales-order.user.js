@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outline required fields on an Unleashed sales order
 // @namespace    https://gwg.nz
-// @version      0.8
+// @version      0.9
 // @description  Outline required fields on an Unleashed sales order
 // @author       You
 // @match        https://au.unleashedsoftware.com/v2/SalesOrder/Update/*
@@ -47,8 +47,14 @@
             changeBorder(addressFields, addressFieldsValue.value);
         });
     }
-    
-    if(document.querySelector("#DeliveryPostCode").value >= 7000) {
+
+    let deliveryMethod = document.querySelector("#DeliveryMethodList");
+    if(document.querySelector("#DeliveryPostCode").value >= 7000 && deliveryMethod[deliveryMethod.selectedIndex].text !== "NZ Couriers / Two-Day") {
         alert("Ask about two-day shipping to the South Island!");
+    }
+
+    let paymentTerms = document.querySelector("#PaymentTerms");
+    if(paymentTerms === "Prepaid") {
+        alert("Prepaid. Have you collected payment yet?");
     }
 })();
