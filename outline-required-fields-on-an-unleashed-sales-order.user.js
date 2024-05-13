@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outline required fields on an Unleashed sales order
 // @namespace    https://gwg.nz
-// @version      0.12
+// @version      0.13
 // @description  Outline required fields on an Unleashed sales order
 // @author       You
 // @match        https://au.unleashedsoftware.com/v2/SalesOrder/Update/*
@@ -49,7 +49,8 @@
     }
 
     let deliveryMethodDuplicateMaybe = document.querySelector("#DeliveryMethodList");
-    if(document.querySelector("#DeliveryPostCode").value >= 7000 && deliveryMethodDuplicateMaybe[deliveryMethodDuplicateMaybe.selectedIndex].text !== "NZ Couriers / Two-Day") {
+    let country = document.querySelectorAll('country-select-box')[0].attributes[0].nodeValue;
+    if(document.querySelector("#DeliveryPostCode").value >= 7000 && document.querySelector("#DeliveryPostCode").value < 10000 && deliveryMethodDuplicateMaybe[deliveryMethodDuplicateMaybe.selectedIndex].text !== "NZ Couriers / Two-Day" && deliveryMethodDuplicateMaybe[deliveryMethodDuplicateMaybe.selectedIndex].text !== "Courier / Slow" && country === "New Zealand") {
         alert("Ask about two-day shipping to the South Island!");
     }
 
