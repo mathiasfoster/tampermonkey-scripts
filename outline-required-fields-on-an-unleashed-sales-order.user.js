@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outline required fields on an Unleashed sales order
 // @namespace    https://gwg.nz
-// @version      0.13
+// @version      0.14
 // @description  Outline required fields on an Unleashed sales order
 // @author       You
 // @match        https://au.unleashedsoftware.com/v2/SalesOrder/Update/*
@@ -58,8 +58,5 @@
     if(paymentTerms.textContent === "Prepaid") {
         // alert("Prepaid. Have you collected payment yet?");
     }
-
-    let salesOrderNumber = document.querySelector("#OrderNumberDisplay");
-    salesOrderNumber.style="user-select: all;"
     
 })();
