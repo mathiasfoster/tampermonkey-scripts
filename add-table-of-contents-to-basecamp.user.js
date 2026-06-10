@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add Table of Contents to Basecamp documents
 // @namespace    http://basecamp.com
-// @version      0.4
+// @version      0.5
 // @description  Add a table of contents at the top of Basecamp documents in a specific team
 // @author       Mathias Foster
 // @match        https://3.basecamp.com/*/buckets/*/documents/*
@@ -40,7 +40,13 @@
     for (let i = 0; i < scrape.length; i++) {
         // Skip hidden headings, e.g. Basecamp's "isn't fully functional right now" warning
         let isVisible = scrape[i].getClientRects().length > 0;
-        if (scrape[i].innerText.trim() && isVisible) {
+
+        // Basecamp embeds a "#" permalink anchor inside each heading; strip it from the TOC text
+        let headingCopy = scrape[i].cloneNode(true);
+        headingCopy.querySelectorAll('a').forEach(function (anchor) { anchor.remove(); });
+        let headingText = headingCopy.textContent.trim();
+
+        if (headingText && isVisible) {
             // Add id to heading
             scrape[i].setAttribute("id", "heading" + i.toString());
 
@@ -60,7 +66,7 @@
             newA.appendChild(newLi);
 
             // Create text inside list item
-            let newLiText = document.createTextNode(scrape[i].innerText);
+            let newLiText = document.createTextNode(headingText);
             newLi.appendChild(newLiText);
 
             // Add to Table of Contents element
