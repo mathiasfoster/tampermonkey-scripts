@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add Table of Contents to Basecamp documents
 // @namespace    http://basecamp.com
-// @version      0.5
+// @version      0.6
 // @description  Add a table of contents at the top of Basecamp documents in a specific team
 // @author       Mathias Foster
 // @match        https://3.basecamp.com/*/buckets/*/documents/*
@@ -44,7 +44,8 @@
         // Basecamp embeds a "#" permalink anchor inside each heading; strip it from the TOC text
         let headingCopy = scrape[i].cloneNode(true);
         headingCopy.querySelectorAll('a').forEach(function (anchor) { anchor.remove(); });
-        let headingText = headingCopy.textContent.trim();
+        // Belt and braces: also drop a trailing "#" however Basecamp marks it up
+        let headingText = headingCopy.textContent.trim().replace(/\s*#+\s*$/, '');
 
         if (headingText && isVisible) {
             // Add id to heading
