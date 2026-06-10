@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add Table of Contents to Basecamp documents
 // @namespace    http://basecamp.com
-// @version      0.3
+// @version      0.4
 // @description  Add a table of contents at the top of Basecamp documents in a specific team
 // @author       Mathias Foster
 // @match        https://3.basecamp.com/*/buckets/*/documents/*
@@ -14,7 +14,8 @@
     'use strict';
     console.log("Userscript is working");
 
-    let scrape = document.querySelectorAll('.formatted_content > h1');
+    // Basecamp now offers three heading levels (formerly a single Title), so pick up all of them
+    let scrape = document.querySelectorAll('.formatted_content h1, .formatted_content h2, .formatted_content h3');
 
     // Target the main content instead of the header
     let content = document.querySelector('article');
@@ -37,7 +38,9 @@
     }
 
     for (let i = 0; i < scrape.length; i++) {
-        if (scrape[i].innerText) {
+        // Skip hidden headings, e.g. Basecamp's "isn't fully functional right now" warning
+        let isVisible = scrape[i].getClientRects().length > 0;
+        if (scrape[i].innerText.trim() && isVisible) {
             // Add id to heading
             scrape[i].setAttribute("id", "heading" + i.toString());
 
@@ -50,8 +53,10 @@
                 document.location.hash = "heading" + i.toString();
             });
 
-            // Create new list item
+            // Create new list item, indented to match the heading level (h1/h2/h3)
             let newLi = document.createElement('li');
+            let headingLevel = parseInt(scrape[i].tagName.substring(1), 10);
+            newLi.style.marginLeft = ((headingLevel - 1) * 20) + 'px';
             newA.appendChild(newLi);
 
             // Create text inside list item
